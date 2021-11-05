@@ -15,6 +15,7 @@ library(htmlwidgets)
 
 ```{r dataframes, echo=FALSE, include=FALSE}
 APwATs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/heatmapASV/master/Data/APwATs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
+rownames(APwATs) <- APwATs[, 1]
 oASVs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/heatmapASV/master/Data/oASVs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
 rownames(oASVs) <- oASVs[, 1]
 oASVs <- oASVs[, -1]
