@@ -1,0 +1,37 @@
+---
+title: "Heatmap_ASV"
+author: "Camilo Gálvez A."
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(viridis)
+library(plotly)
+library(heatmaply)
+library(htmlwidgets)
+```
+
+```{r dataframes, echo=FALSE, include=FALSE}
+APwATs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/heatmapASV/master/Data/APwATs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
+oASVs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/heatmapASV/master/Data/oASVs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
+```
+
+```{r, echo=FALSE, include=FALSE}
+Shared <- APwATs %>% filter(Cha == 1 & Fla == 1 & Hu == 1 & Pc == 1)
+ShaSeq <- Shared[, 2]
+ShaOTU <- Shared[, 1]
+ShaASVs <- select(oASVs, all_of(ShaSeq))
+colnames(ShaASVs) <- ShaOTU
+```
+
+```{r, echo=FALSE, include=FALSE}
+hmASV <- heatmaply(normalize(ShaASVs), 
+                     Colv = NA, 
+                     Rowv = NA, 
+                     seriate = "none", 
+                     main = "Shared ASVs across all sites")
+saveWidget(hmASV, file = "D:/Documents/GitHub/Interactive/heatmapASV/index.html")
+```
+
