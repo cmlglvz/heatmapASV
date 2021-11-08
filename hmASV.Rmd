@@ -14,9 +14,9 @@ library(htmlwidgets)
 ```
 
 ```{r dataframes, echo=FALSE, include=FALSE}
-APwATs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/heatmapASV/master/Data/APwATs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
+APwATs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/datasets/master/Data/eAnalisis/APwATs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
 rownames(APwATs) <- APwATs[, 1]
-oASVs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/heatmapASV/master/Data/oASVs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
+oASVs <- read.csv2("https://raw.githubusercontent.com/cmlglvz/datasets/master/Data/eAnalisis/oASVs.csv", header = TRUE, sep = ";", dec = ".", skip = 0)
 rownames(oASVs) <- oASVs[, 1]
 oASVs <- oASVs[, -1]
 ```
@@ -35,6 +35,6 @@ hmASV <- heatmaply(normalize(ShaASVs),
                      Rowv = NA, 
                      seriate = "none", 
                      main = "Shared ASVs across all sites")
-saveWidget(hmASV, file = "D:/Documents/GitHub/Interactive/heatmapASV/index.html")
+saveWidget(hmASV, file = "/Users/Artemis/Documents/GitHub/heatmapASV/index.html")
 ```
 
